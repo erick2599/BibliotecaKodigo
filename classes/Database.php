@@ -1,6 +1,7 @@
 <?php
 
-class Database {
+class Database
+{
     private $host = 'localhost';
     private $db_name = 'biblioteca';
     private $username = 'root';
@@ -8,11 +9,18 @@ class Database {
     public $conn;
 
     // Método para obtener la conexión a la base de datos
-    public function getConnection() {
+    public function getConnection()
+    {
         $this->conn = null;
-        
-        // TODO: Implementar la conexión a la base de datos utilizando PDO
-        
+
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn->exec("set names utf8");
+            //echo ("Conexión exitosa a la base de datos");
+        } catch (PDOException $exception) {
+            echo "Error de conexión: " . $exception->getMessage();
+        }
+
         return $this->conn;
     }
 }

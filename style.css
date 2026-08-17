@@ -1,0 +1,278 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL (Paleta de colores moderna)
+   ========================================================================== */
+:root {
+    --bg-color: #f4f6f9;         /* Gris claro de fondo general */
+    --card-bg: #ffffff;          /* Blanco para contenedores */
+    --text-main: #2d3748;        /* Gris oscuro para texto principal */
+    --text-muted: #718096;      /* Gris suave para textos secundarios o subtítulos */
+    --primary: #4f46e5;         /* Color índigo moderno para botones y elementos clave */
+    --primary-hover: #4338ca;   /* Índigo oscuro al pasar el cursor */
+    --border-color: #e2e8f0;    /* Gris muy claro para bordes y líneas divisorias */
+    --radius: 12px;             /* Bordes redondeados modernos */
+    --transition: all 0.2s ease-in-out;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 2.5rem 1rem;
+}
+
+/* ==========================================================================
+   2. CONTENEDOR PRINCIPAL
+   ========================================================================== */
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1a202c;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+/* ==========================================================================
+   3. MENÚ DE NAVEGACIÓN (Estilo pestañas de panel de control)
+   ========================================================================== */
+nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    background: #edf2f7;
+    padding: 0.4rem;
+    border-radius: 8px;
+}
+
+nav a, 
+.container nav a {
+    display: inline-block;
+    text-decoration: none !important;
+    color: #5d5a88 !important; /* Color morado suave/gris actual */
+    background-color: #ffffff !important; /* Fondo blanco actual */
+    padding: 12px 20px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* 2. El HOVER y la pestaña ACTIVA (forzamos que compartan el mismo estilo exacto) */
+nav a:hover, 
+nav a.active,
+.container nav a:hover,
+.container nav a.active {
+    background-color: #512da8 !important; /* Morado eléctrico llamativo */
+    color: #ffffff !important;            /* Texto blanco obligatorio */
+    box-shadow: 0 4px 10px rgba(81, 45, 168, 0.25) !important; /* Sombra de presencia */
+}
+
+/* ==========================================================================
+   4. FORMULARIO (Estructura en una columna limpia)
+   ========================================================================== */
+form {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: var(--radius);
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+form label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+form label:first-of-type {
+    margin-top: 0;
+}
+
+/* Localiza y reemplaza la regla de los inputs por esta */
+.crud-form input[type="text"],
+.crud-form input[type="email"],
+.crud-form input[type="Email"], /* Captura tu input con 'E' mayúscula */
+.crud-form input[type="tel"],
+.crud-form input[type="number"] {
+    width: 100% !important;
+    padding: 10px !important;
+    margin-bottom: 12px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    font-size: 14px !important;
+    background-color: #ffffff !important;
+}
+
+/* Agrega también el efecto de enfoque (focus) para cuando el usuario hace clic en ellos */
+.crud-form input:focus {
+    outline: none !important;
+    border-color: #512da8 !important; /* El color morado de tus botones */
+    box-shadow: 0 0 0 3px rgba(81, 45, 168, 0.15) !important;
+}
+
+
+form button {
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1.25rem;
+    transition: var(--transition);
+}
+
+form button:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-primary { 
+    background-color: #512da8 !important; /* Morado uniforme de tu aplicación */
+    color: white !important; 
+}
+.btn-primary:hover { 
+    background-color: #412294 !important; 
+}
+
+
+/* ==========================================================================
+   5. TABLA DE LIBROS MODERNA
+   ========================================================================== */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll horizontal en móviles si la tabla es muy ancha */
+    background: #ffffff;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+/* Encabezados de columnas */
+table th {
+    background-color: #f8fafc;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 1rem 1.25rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* Filas y celdas */
+table td {
+    padding: 1.25rem 1.25rem;
+    border-bottom: 1px solid #edf2f7;
+    vertical-align: middle;
+}
+
+/* Destacar la columna ID */
+table td:first-child {
+    font-weight: 600;
+    color: var(--primary);
+    width: 70px;
+}
+
+/* Efecto hover en las filas */
+table tbody tr:hover {
+    background-color: #f8fafc;
+    transition: background-color 0.2s ease;
+}
+
+/* Evita que el borde de la última fila rompa las esquinas redondeadas de la tabla */
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ==========================================================================
+   6. BOTONES DE ACCIÓN (Editar y Eliminar)
+   ========================================================================== */
+table td a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 0.85rem;
+    border-radius: 6px;
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: var(--transition);
+}
+
+/* Botón Editar (Estilo píldora color ámbar/amarillo suave) */
+table td a[href*="editar"] {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+table td a[href*="editar"]:hover {
+    background-color: #fde68a;
+    color: #b45309;
+}
+
+/* Botón Eliminar (Estilo píldora color rojo suave) */
+table td a[href*="eliminar"] {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+table td a[href*="eliminar"]:hover {
+    background-color: #fecaca;
+    color: #b91c1c;
+}
+
+/* Estilo para los inputs de tipo fecha y menús select */
+.crud-form input[type="date"],
+.crud-select {
+    width: 100% !important;
+    padding: 10px !important;
+    margin-bottom: 12px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    font-size: 14px !important;
+    background-color: #ffffff !important;
+}
+
+/* Etiquetas visuales para los estados */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+.status-activo { background-color: #d4edda; color: #155724; }
+.status-devuelto { background-color: #cce5ff; color: #004085; }
+.status-vencido { background-color: #f8d7da; color: #721c24; }
+
